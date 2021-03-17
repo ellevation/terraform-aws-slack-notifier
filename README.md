@@ -5,7 +5,7 @@
 Terraform module that builds and deploys a lamdbda function for the
 [`aws-to-slack`][aws-to-slack] package.
 
-[aws-to-slack]: https://github.com/arabold/aws-to-slack
+[aws-to-slack]: https://github.com/ellevation/aws-to-slack
 
 ## Usage
 
