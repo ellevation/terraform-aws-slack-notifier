@@ -1,8 +1,8 @@
 # AWS-to-Slack
 
 [![npm](https://img.shields.io/npm/v/aws-to-slack.svg)](https://www.npmjs.com/package/aws-to-slack)
-[![license](https://img.shields.io/github/license/ellevation/aws-to-slack.svg)](https://github.com/ellevation/aws-to-slack/blob/master/LICENSE)
-[![dependencies](https://img.shields.io/david/ellevation/aws-to-slack.svg)](https://www.npmjs.com/package/aws-to-slack)
+[![license](https://img.shields.io/github/license/arabold/aws-to-slack.svg)](https://github.com/arabold/aws-to-slack/blob/master/LICENSE)
+[![dependencies](https://img.shields.io/david/arabold/aws-to-slack.svg)](https://www.npmjs.com/package/aws-to-slack)
 
 
 Forward AWS CloudWatch Alarms and other notifications from Amazon SNS to Slack.
@@ -60,7 +60,7 @@ Ready to try the latest version for yourself? Installation into your own AWS env
 
 1. Use AWS Console's [Create CloudFormation Stack](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=aws-to-slack) tool.
 
-   Upload [cloudformation.yaml](https://raw.githubusercontent.com/ellevation/aws-to-slack/master/cloudformation.yaml) as your template.
+   Upload [cloudformation.yaml](https://raw.githubusercontent.com/arabold/aws-to-slack/master/cloudformation.yaml) as your template.
 
 1. Finish launching the Stack.
 
@@ -96,7 +96,7 @@ The Lambda function communicates with Slack through a Slack webhook
 Note that the AWS region will be the region from which you launch the CloudFormation wizard, which will also scope the resources (SNS, etc.) to that region. 
 
 Launch the CloudFormation Stack by using our preconfigured CloudFormation
-[template](https://raw.githubusercontent.com/ellevation/aws-to-slack/master/cloudformation.yaml) and following the [steps above](#try).
+[template](https://raw.githubusercontent.com/arabold/aws-to-slack/master/cloudformation.yaml) and following the [steps above](#try).
 
 **Afterwards**
 
@@ -163,7 +163,7 @@ TARGET=targets/my-deploy.env make update-stack
 
 You want to contribute? That's awesome! 🎉
 
-Check out our [issues page](https://github.com/ellevation/aws-to-slack/issues) for
+Check out our [issues page](https://github.com/arabold/aws-to-slack/issues) for
 some ideas how to contribute and a list of open tasks. There're plenty of
 notification formats that still need to be supported.
 
