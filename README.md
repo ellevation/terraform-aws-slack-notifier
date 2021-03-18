@@ -20,7 +20,7 @@ To create just the lambda function, use only the variable `hook_url`.
 
 ```hcl
 module "aws-to-slack" {
-  source = "git::https://github.com/plus3it/terraform-aws-slack-notifier.git"
+  source = "git::https://github.com/ellevation/terraform-aws-slack-notifier.git"
 
   hook_url = "https://hooks.slack.com/services/your/hook/id"
 }
@@ -35,7 +35,7 @@ permissions to the lambda function. See the section [Details for `event_rules`](
 
 ```hcl
 module "aws-to-slack" {
-  source = "git::https://github.com/plus3it/terraform-aws-slack-notifier.git"
+  source = "git::https://github.com/ellevation/terraform-aws-slack-notifier.git"
 
   hook_url = "https://hooks.slack.com/services/your/hook/id"
 
@@ -82,7 +82,7 @@ for the pattern is available in the [Amazon CloudWatch Events documentation][clo
 
 ## Authors
 
-This module is maintained by [Plus3 IT Systems](https://github.com/plus3it).
+This module is maintained by [Plus3 IT Systems](https://github.com/ellevation).
 
 ## License
 

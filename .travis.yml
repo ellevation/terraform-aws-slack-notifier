@@ -3,7 +3,7 @@ language: bash
 env:
   global:
     - REPO="${TRAVIS_REPO_SLUG#*/}"
-    - OWNER=plus3it
+    - OWNER=ellevation
     - RELEASE_BRANCH=master
 
 jobs:
