@@ -6,6 +6,12 @@ data "aws_iam_policy" "cloudwatch_readonly" {
   arn = "arn:aws:iam::aws:policy/CloudWatchReadOnlyAccess"
 }
 
+data "archive_file" "deployment_package" {
+  type        = "zip"
+  source_dir  = "${path.module}/vendor/aws-to-slack/build"
+  output_path = "${path.module}/aws-to-slack.zip"
+}
+
 module "lambda" {
   source = "git::https://github.com/ellevation/terraform-aws-lambda.git"
 
@@ -15,7 +21,7 @@ module "lambda" {
   runtime       = "nodejs10.x"
   timeout       = 10
 
-  deployment_package_path = "${path.module}/vendor/aws-to-slack/aws-to-slack.zip"
+  deployment_package_path = data.archive_file.deployment_package.output_path
 
   policy = {
     json = data.aws_iam_policy.cloudwatch_readonly.policy
