@@ -17,7 +17,7 @@ module "lambda" {
 
   function_name = var.name
   description   = "Post messages from AWS to Slack"
-  handler       = "src/index.handler"
+  handler       = "aws-to-slack/src/index.handler"
   runtime       = "nodejs10.x"
   timeout       = 10
 
