@@ -1,6 +1,6 @@
 AWS_CLI	   ?= /usr/local/bin/aws
 TEMP_PATH   = .temp
-RELEASE_ZIP = release.zip
+RELEASE_ZIP = aws-to-slack.zip
 
 # Load from .env file
 ifdef TARGET

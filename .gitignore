@@ -19,7 +19,6 @@ __pycache__
 *.exe
 *.msi
 *.rpm
-*.zip
 *.tfvars
 
 # Dependency Package Lock
