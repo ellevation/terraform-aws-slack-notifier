@@ -40,16 +40,20 @@ exports.parse = event => {
 		short: true
 	});
 
+	console.log("VPN Endpoint ID: " + connectionVpnEndpointId);
+
 	// Old cert-based VPN
 	if (connectionVpnEndpointId === "cvpn-endpoint-0c65c1341739275b5") {
-		title = `Certificate VPN Connection Attempt - ${deviceIp}`
+		console.log("Endpoint = Cert");
+		title = `Certificate VPN Connection Attempt - ${deviceIp}`;
 		authorName = "Certificate Prod VPN Connection";
 
 		color = event.COLORS.warning;
 	}
 	// New SAML-based VPN
 	else if (connectionVpnEndpointId === "cvpn-endpoint-0ba8b7b1c307b5186") {
-		title = `SAML VPN Connection Attempt - ${deviceIp}`
+		console.log("Endpoint = SAML");
+		title = `SAML VPN Connection Attempt - ${deviceIp}`;
 		authorName = "SAML Prod VPN Connection";
 		const username = event.get("username");
 
@@ -59,6 +63,10 @@ exports.parse = event => {
 			short: true
 		});
 	}
+
+	console.log("Author Name: " + authorName);
+	console.log("Title: " + title);
+	console.log("Fields: " + fields);
 
 	return event.attachmentWithDefaults({
 		author_name: authorName,
