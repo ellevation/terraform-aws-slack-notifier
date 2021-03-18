@@ -7,7 +7,7 @@ data "aws_iam_policy" "cloudwatch_readonly" {
 }
 
 module "lambda" {
-  source = "git::https://github.com/ellevation/terraform-aws-lambda.git?ref=v1.1.0"
+  source = "git::https://github.com/ellevation/terraform-aws-lambda.git"
 
   function_name = var.name
   description   = "Post messages from AWS to Slack"
@@ -15,7 +15,7 @@ module "lambda" {
   runtime       = "nodejs10.x"
   timeout       = 10
 
-  source_path = "${path.module}/vendor"
+  deployment_package_path = "${path.module}/vendor/aws-to-slack/aws-to-slack.zip"
 
   policy = {
     json = data.aws_iam_policy.cloudwatch_readonly.policy
