@@ -1,5 +1,4 @@
 AWS_CLI	   ?= /usr/local/bin/aws
-TEMP_PATH   = .temp
 RELEASE_ZIP = aws-to-slack.zip
 
 # Load from .env file
@@ -31,24 +30,21 @@ endif
 .PHONY: package
 package:
 	# Prepare
-	-@rm -r "$(TEMP_PATH)" 2>/dev/null || true
+	-@rm -r ./build 2>/dev/null || true
 	-@rm "$(RELEASE_ZIP)" 2>/dev/null || true
-	@mkdir -p "$(TEMP_PATH)"
+	@mkdir -p ./build
 
 	# Generate package-lock.json
 	@npm i --package-lock-only
 
 	# Copy sources to temporary folder
-	@cp -R src package-lock.json package.json "$(TEMP_PATH)/"
+	@cp -R src package-lock.json package.json "./build/"
 
 	# Install dependencies
-	@cd "$(TEMP_PATH)" && npm install --production
+	@cd ./build && npm install --production
 
 	# Package artifact
-	@cd "$(TEMP_PATH)" && zip -rq "../$(RELEASE_ZIP)" .
-
-	# Cleanup
-	@rm -r "$(TEMP_PATH)"
+	@cd ./build && zip -rq "../$(RELEASE_ZIP)" .
 
 
 # Perform create-stack operation

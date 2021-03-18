@@ -19,7 +19,9 @@ __pycache__
 *.exe
 *.msi
 *.rpm
+*.zip
 *.tfvars
 
 # Dependency Package Lock
 vendor/aws-to-slack/package-lock.json
+vendor/aws-to-slack/aws-to-slack.zip
