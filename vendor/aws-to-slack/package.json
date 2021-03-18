@@ -1,30 +1,25 @@
 {
-  "_args": [
-    [
-      "git+https://github.com/ellevation/aws-to-slack.git#semver:1.3.0",
-      "/Users/llamia/workspaces/terraform-aws-slack-notifier"
-    ]
-  ],
-  "_from": "git+https://github.com/ellevation/aws-to-slack.git#semver:1.3.0",
-  "_id": "aws-to-slack@git+https://github.com/ellevation/aws-to-slack.git#a87a86f76f5d035613f1ec359ab36a3507df7948",
+  "_from": "git+https://github.com/ellevation/aws-to-slack.git",
+  "_id": "aws-to-slack@1.3.0",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/aws-to-slack",
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "git+https://github.com/ellevation/aws-to-slack.git#semver:1.3.0",
-    "rawSpec": "git+https://github.com/ellevation/aws-to-slack.git#semver:1.3.0",
-    "saveSpec": "git+https://github.com/ellevation/aws-to-slack.git#semver:1.3.0",
+    "raw": "aws-to-slack@git+https://github.com/ellevation/aws-to-slack.git",
+    "name": "aws-to-slack",
+    "escapedName": "aws-to-slack",
+    "rawSpec": "git+https://github.com/ellevation/aws-to-slack.git",
+    "saveSpec": "git+https://github.com/ellevation/aws-to-slack.git",
     "fetchSpec": "https://github.com/ellevation/aws-to-slack.git",
-    "gitRange": "1.3.0",
     "gitCommittish": null
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "git+https://github.com/ellevation/aws-to-slack.git#a87a86f76f5d035613f1ec359ab36a3507df7948",
-  "_spec": "git+https://github.com/ellevation/aws-to-slack.git#semver:1.3.0",
+  "_resolved": "git+https://github.com/ellevation/aws-to-slack.git#e0f88d23fd246a9764471c080868c1d85391d498",
+  "_spec": "aws-to-slack@git+https://github.com/ellevation/aws-to-slack.git",
   "_where": "/Users/llamia/workspaces/terraform-aws-slack-notifier",
   "author": {
     "name": "Andre Rabold"
@@ -32,9 +27,11 @@
   "bugs": {
     "url": "https://github.com/arabold/aws-to-slack/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "lodash": "^4.17.14"
   },
+  "deprecated": false,
   "description": "Forward AWS Notification Messages to Slack",
   "devDependencies": {
     "aws-sdk": "^2.463.0",
