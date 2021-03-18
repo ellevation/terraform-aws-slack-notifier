@@ -7,7 +7,7 @@ exports.matches = event =>
 exports.parse = event => {
 	const connectionAttemptStatus = event.get("connection-attempt-status");
 	const connectionAttemptFailureReason = event.get("connection-attempt-failure-reason");
-	const connectionVpnEndpointId = event.get("connection-attempt-failure-reason");
+	const connectionVpnEndpointId = event.get("client-vpn-endpoint-id");
 	const connectionStartTime = new Date(event.get("connection-start-time"));
 	const deviceIp = event.get("device-ip");
 	var authorName;
