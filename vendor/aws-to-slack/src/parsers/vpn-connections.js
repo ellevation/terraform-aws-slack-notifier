@@ -11,9 +11,9 @@ exports.parse = event => {
 	const connectionStartTime = new Date(event.get("connection-start-time"));
 	const deviceIp = event.get("device-ip");
 	var authorName;
+	var title;
 	const fields = [];
 
-	var title = `VPN Connection Attempt - ${deviceIp} - ${connectionAttemptStatus}`;
 	var color = event.COLORS.neutral;
 
 	fields.push({
@@ -42,12 +42,14 @@ exports.parse = event => {
 
 	// Old cert-based VPN
 	if (connectionVpnEndpointId === "cvpn-endpoint-0c65c1341739275b5") {
+		title = `Certificate VPN Connection Attempt - ${deviceIp}`
 		authorName = "Certificate Prod VPN Connection";
 
 		color = event.COLORS.warning;
 	}
 	// New SAML-based VPN
 	else if (connectionVpnEndpointId === "cvpn-endpoint-0ba8b7b1c307b5186") {
+		title = `SAML VPN Connection Attempt - ${deviceIp}`
 		authorName = "SAML Prod VPN Connection";
 		const username = event.get("username");
 
