@@ -24,6 +24,7 @@ const _ = require("lodash")
 		"ses-bounce",
 		"ses-complaint",
 		"ses-received",
+		"vpn-connections",
 		// Last attempt to parse, will match any message:
 		"generic",
 	];
