@@ -39,3 +39,4 @@ package: clean
 	mkdir -p ./vendor
 	mv ./node_modules/aws-to-slack ./vendor
 	mv ./node_modules ./vendor
+	cd ./vendor/aws-to-slack; make package
