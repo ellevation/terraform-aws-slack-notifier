@@ -3,6 +3,12 @@ variable "default_hook_url" {
   type        = string
 }
 
+variable "hook_url_overrides" {
+  description = "Slack webhook URL; see <https://api.slack.com/incoming-webhooks>"
+  type        = map(string)
+  default     = {}
+}
+
 variable "name" {
   default     = "aws-to-slack"
   description = "(Optional) Name to associate with the lambda function"

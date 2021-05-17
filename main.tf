@@ -29,7 +29,8 @@ module "lambda" {
 
   environment = {
     variables = {
-      DEFAULT_SLACK_HOOK_URL = var.default_hook_url
+      DEFAULT_SLACK_HOOK_URL   = var.default_hook_url
+      SLACK_HOOK_URL_OVERRIDES = jsonencode(var.hook_url_overrides)
     }
   }
 }
