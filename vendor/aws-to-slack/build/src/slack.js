@@ -4,7 +4,7 @@ const url = require("url")
 	, _ = require("lodash");
 
 /** The Slack hook URL */
-const hookUrlPromise = shouldDecryptBlob(process.env.SLACK_HOOK_URL, s =>
+const defaultHookUrlPromise = shouldDecryptBlob(process.env.DEFAULT_SLACK_HOOK_URL, s =>
 	// URL should be 78-80 characters long when decrypted
 	s.length > 100 && !/https?:\/\/\w/.test(s));
 
@@ -65,13 +65,13 @@ class Slack {
 	 */
 	static postMessage(message) {
 		return retry(3, async () => {
-			const hookUrl = await hookUrlPromise;
+			const defaultHookUrl = await defaultHookUrlPromise;
 			const slackChannel = await slackChannelPromise;
 			if (_.isEmpty(message.channel) && !_.isEmpty(slackChannel)) {
 				message.channel = slackChannel;
 			}
 
-			const response = await postJson(message, hookUrl);
+			const response = await postJson(message, defaultHookUrl);
 			const statusCode = response.statusCode;
 
 			if (200 <= statusCode && statusCode < 300) {
