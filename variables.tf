@@ -1,4 +1,4 @@
-variable "hook_url" {
+variable "default_hook_url" {
   description = "Slack webhook URL; see <https://api.slack.com/incoming-webhooks>"
   type        = string
 }

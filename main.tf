@@ -29,7 +29,7 @@ module "lambda" {
 
   environment = {
     variables = {
-      SLACK_HOOK_URL = var.hook_url
+      DEFAULT_SLACK_HOOK_URL = var.default_hook_url
     }
   }
 }
