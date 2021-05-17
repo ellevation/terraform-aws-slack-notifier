@@ -8,6 +8,11 @@ const defaultHookUrlPromise = shouldDecryptBlob(process.env.DEFAULT_SLACK_HOOK_U
 	// URL should be 78-80 characters long when decrypted
 	s.length > 100 && !/https?:\/\/\w/.test(s));
 
+/** Overrides for the slack hook URL */
+const hookUrlOverridesPromise = shouldDecryptBlob(process.env.SLACK_HOOK_URL_OVERRIDES, s =>
+	// Overrides should be a valid JSON object when decrypted
+	s.length > 100 && !s.startsWith("{") && !s.endsWith("}"));
+
 /** The Slack channel to send a message to stored in the slackChannel environment variable */
 const slackChannelPromise = shouldDecryptBlob(process.env.SLACK_CHANNEL);
 
@@ -61,17 +66,28 @@ class Slack {
 	 * Posts a message to Slack.
 	 *
 	 * @param {Object} message - Message to post to Slack
+	 * @param {String} parserName - Name of the parser that parsed this event
 	 * @returns {Promise} Fulfills on success, rejects on error.
 	 */
-	static postMessage(message) {
+	static postMessage(message, parserName) {
 		return retry(3, async () => {
 			const defaultHookUrl = await defaultHookUrlPromise;
 			const slackChannel = await slackChannelPromise;
+			var targetHookUrl = defaultHookUrl;
+			try {
+				const hookUrlOverrides = JSON.parse(await hookUrlOverridesPromise);
+				const overrideUrl = hookUrlOverrides[parserName];
+				if (overrideUrl) {
+					targetHookUrl = overrideUrl;
+				}
+			} catch (err) {
+				console.error("Error parsing hook overrides, using default hook:", err);
+			}
 			if (_.isEmpty(message.channel) && !_.isEmpty(slackChannel)) {
 				message.channel = slackChannel;
 			}
 
-			const response = await postJson(message, defaultHookUrl);
+			const response = await postJson(message, targetHookUrl);
 			const statusCode = response.statusCode;
 
 			if (200 <= statusCode && statusCode < 300) {

@@ -142,7 +142,7 @@ class LambdaHandler {
 					if (res) {
 						const message = res.slackMessage;
 						console.log(`SNS-Record[${i}]: Sending Slack message from Parser[${res.parserName}]:`, JSON.stringify(message, null, 2));
-						waitingTasks.push(Slack.postMessage(message));
+						waitingTasks.push(Slack.postMessage(message, res.parserName));
 						waitingTasks.push(Emailer.checkAndSend(message, event));
 					}
 					else if (handler.lastParser) {
@@ -158,7 +158,7 @@ class LambdaHandler {
 				if (res) {
 					const message = res.slackMessage;
 					console.log(`Sending Slack message from Parser[${res.parserName}]:`, JSON.stringify(message, null, 2));
-					waitingTasks.push(Slack.postMessage(message));
+					waitingTasks.push(Slack.postMessage(message, res.parserName));
 					waitingTasks.push(Emailer.checkAndSend(message, event));
 				}
 				else if (handler.lastParser) {
