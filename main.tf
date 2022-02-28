@@ -13,11 +13,11 @@ data "archive_file" "deployment_package" {
 }
 
 module "lambda" {
-  source = "git::https://github.com/plus3it/terraform-aws-lambda.git?ref=v1.3.0"
+  source = "git::https://github.com/ellevation/terraform-aws-lambda.git"
 
   function_name = var.name
   description   = "Post messages from AWS to Slack"
-  handler       = "aws-to-slack/src/index.handler"
+  handler       = "src/index.handler"
   runtime       = "nodejs14.x"
   timeout       = 10
 
