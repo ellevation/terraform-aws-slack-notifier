@@ -20,7 +20,8 @@ const _ = require("lodash")
 		"guardduty",
 		"inspector",
 		"rds",
-		"ecs-event",
+		"ecs-event-cpio",
+		"ecs-event", // This needs to be after all other ECS event parsers
 		"ses-bounce",
 		"ses-complaint",
 		"ses-received",
