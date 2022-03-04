@@ -17,6 +17,7 @@ const matchingServices = [
 exports.matches = event => {
 	if (event.getSource() === "ecs") {
 		const detailType = event.get("detail-type");
+		const cluster = event.parseArn(event.get("detail.clusterArn")).resource.slice(8);
 		var service;
 		if (detailType === "ECS Task State Change") {
 			service = event.get("detail.group").slice(8);
