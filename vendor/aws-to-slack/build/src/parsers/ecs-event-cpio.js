@@ -14,8 +14,21 @@ const matchingServices = [
 	"thanos-telegraf-v2",
 ];
 
-exports.matches = event =>
-	event.getSource() === "ecs" && matchingServices.includes(event.get("detail.group").slice(8));
+exports.matches = event => {
+	if (event.getSource() === "ecs") {
+		const detailType = event.get("detail-type");
+		var service;
+		if (detailType === "ECS Task State Change") {
+			service = event.get("detail.group").slice(8);
+		}
+		else if (detailType === "ECS Service Action") {
+			const getService = event.parseArn(event.get("resources")).resource;
+			service = getService.slice(8).replace(cluster+'/', '');
+		}
+		return matchingServices.includes(service)
+	}
+	return false;
+}
 
 exports.parse = event => {
 	const time = new Date(event.get("time"));
